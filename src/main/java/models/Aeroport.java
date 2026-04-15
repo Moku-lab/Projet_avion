@@ -15,7 +15,7 @@ public class Aeroport {
         return nom;
     }
 
-    public void assignFlight(){
+    public void affecterVol(){
         System.out.println("Vol affecté à l'aéroport " + nom);
     }
 

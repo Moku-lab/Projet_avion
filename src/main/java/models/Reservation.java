@@ -5,7 +5,7 @@ import java.util.Date;
 public class Reservation {
     private String numeroReservation;
     private Date dateReservation;
-    private String statut;
+    public String statut;
     private Passager passager;
     private Vol vol;
 
