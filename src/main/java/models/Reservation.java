@@ -33,7 +33,7 @@ public class Reservation {
     }
 
     //passager
-    public void modifierReservation(Passager nouveauPassager) {
+    public void modifierPassager(Passager nouveauPassager) {
         this.passager = nouveauPassager;
         System.out.println("passager modifié.");
     }
