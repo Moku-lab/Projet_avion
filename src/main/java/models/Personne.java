@@ -16,4 +16,6 @@ public abstract class Personne {
     public void obtenirInfos() {
         System.out.println("ID: " + identifiant + " | Nom: " + nom);
     }
+    public String getIdentifiant() { return identifiant; }
+    public String getNom() { return nom; }
 }

@@ -57,6 +57,7 @@ public class Reservation {
         System.out.println("Passager: " + passager.nom);
         System.out.println("Date: " + dateReservation);
     }
+    public String getNumeroReservation() { return numeroReservation; }
 }
 
 

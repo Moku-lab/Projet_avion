@@ -31,4 +31,9 @@ public class Vol {
             System.out.println("Pilote: " + piloteAssigne.nom);
         }
     }
+
+    public String getNumeroVol() { return numeroVol; }
+    public String getOrigine() { return origine; }
+    public String getDestination() { return destination; }
+    public void setDestination(String destination) { this.destination = destination; }
 }

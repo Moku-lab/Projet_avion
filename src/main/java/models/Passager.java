@@ -11,4 +11,5 @@ public class Passager extends Personne {
     public void reserverVol() {
         System.out.println(nom + " a réservé un vol.");
     }
+    public String getPasseport() { return passeport; }
 }
