@@ -1,6 +1,8 @@
 package services;
 
 import models.Passager;
+
+import java.io.*;
 import java.util.ArrayList;
 
 public class GestionPassagers {
@@ -43,6 +45,34 @@ public class GestionPassagers {
         }
         for (int i = 0; i < passagers.size(); i++) {
             passagers.get(i).obtenirInfos();
+        }
+    }
+
+    public void sauvegarderPassagers(String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Passager p : passagers) {
+                writer.write(p.getIdentifiant() + ";" + p.getNom() + ";" + p.getPasseport());
+                writer.newLine();
+            }
+            System.out.println("Données sauvegardées avec succès.");
+        } catch (IOException e) {
+            System.err.println("Erreur d'écriture : " + e.getMessage());
+        }
+    }
+
+    public void chargerPassagers(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data.length == 3) {
+                    Passager p = new Passager(data[0], data[1], "Inconnue", "0000", data[2]);
+                    passagers.add(p);
+                }
+            }
+            System.out.println("Données chargées avec succès.");
+        } catch (IOException e) {
+            System.err.println("Erreur de lecture : " + e.getMessage());
         }
     }
 }

@@ -20,6 +20,7 @@ public class Main {
 
         Vol vol1 = new Vol("AF123", "Paris", "Londres", "18/04/2026");
         Passager p1 = new Passager("PAS-789", "Alice Durand", "Lyon", "06000000", "PZ-9988");
+        Passager p2 = new Passager("PAS-790", "Thomas Durand", "Lyon", "06000000", "PZ-9988");
 
         Reservation res = new Reservation("RES-001", p1, vol1);
 
@@ -29,9 +30,6 @@ public class Main {
 
         res.annulerReservation();
         System.out.println("Nouveau statut : " + res.statut);
-        res.afficherInfos();
-
-        //crud
 
         GestionVols gestionVols = new GestionVols();
         gestionVols.ajouterVol(volParisNyc);
@@ -47,31 +45,31 @@ public class Main {
         System.out.println("\nAnnulation vol ");
         gestionVols.annulerVol("AF123");
 
-        System.out.println("\nTous les vols restants");
-        gestionVols.afficherTousLesVols();
-
         GestionReservations gestionRes = new GestionReservations();
         gestionRes.ajouterReservation(res);
 
         System.out.println("\n Recherche réservation ");
         gestionRes.obtenirReservations("RES-001");
 
-        GestionPassagers gestionPass = new GestionPassagers();
-        gestionPass.ajouterPassager(p1);
-
-        System.out.println("\nRecherche passager");
-        Passager trouve = gestionPass.chercherPassager("PAS-789");
-        if (trouve != null) trouve.obtenirInfos();
-
         GestionAvions gestionAvions = new GestionAvions();
         gestionAvions.ajouterAvion(monA320);
 
         System.out.println("\nVérification disponibilité avion");
         monA320.affecterVol("18/04/2026");
-        monA320.affecterVol("18/04/2026"); // test si pas dispo
 
-        System.out.println("\nAvion disponible pour le 20/04/2026");
-        Avion dispo = gestionAvions.trouverAvionDisponible("20/04/2026");
-        if (dispo != null) System.out.println("Disponible : " + dispo.getImmatriculation());
+        GestionPassagers gestionPass = new GestionPassagers();
+        String fichier = "passagers.csv";
+
+        System.out.println("\n--- Persistance des données ---");
+
+        gestionPass.chargerPassagers(fichier);
+
+        gestionPass.ajouterPassager(p1);
+        gestionPass.ajouterPassager(p2);
+
+
+        gestionPass.sauvegarderPassagers(fichier);
+
+        System.out.println("\nFin du programme.");
     }
 }
