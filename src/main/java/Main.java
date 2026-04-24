@@ -58,7 +58,7 @@ public class Main {
         monA320.affecterVol("18/04/2026");
 
         GestionPassagers gestionPass = new GestionPassagers();
-        String fichier = "passagers.csv";
+        String fichier = "src/passagers.csv";
 
         System.out.println("\n--- Persistance des données ---");
 
@@ -66,7 +66,6 @@ public class Main {
 
         gestionPass.ajouterPassager(p1);
         gestionPass.ajouterPassager(p2);
-
 
         gestionPass.sauvegarderPassagers(fichier);
 
